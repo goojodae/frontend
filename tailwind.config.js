@@ -4,11 +4,14 @@ module.exports = {
   theme: {
     colors: {
         "header-blue": "#C5E5FC",
-        "header-darkBlue":"4B5A7E",
+        "darkblue":"#4B5A7E",
+        "login-input":"#F5F5F6",
+        "darkblue2":"#435B76",
+        "greenblue":"#BEE7E0"
     },
     extend:{
       fontFamily: {
-        "Outfit-regular":["Outfit","sans-serif"],
+        "Outfit":["Outfit","sans-serif"],
       },
     },
     plugins: [],
