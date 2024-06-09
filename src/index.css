@@ -61,20 +61,5 @@ table {
 	border-spacing: 0;
 }
 
-/* 반응형 폰트 설정 */
-html,
-body {
-  font-size: 62.5%;
-  line-height: 1.285;
-}
-@media screen and (max-width: 767px) {
-  html {
-    font-size: 50%;
-  }
-}
-@media screen and (min-width: 1024px) {
-  html {
-    font-size: 78%;
-  }
-}
-/* 1.6rem === 16px */
+/* font-family */
+@import url('https://fonts.googleapis.com/css2?family=Outfit&display=swap');

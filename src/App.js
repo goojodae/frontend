@@ -4,6 +4,7 @@ import Main from "./Main";
 import Login from "./Login";
 import SignUp from "./SignUp";
 import MyPage from "./MyPage";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/mypage" element={<MyPage />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
