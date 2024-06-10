@@ -8,7 +8,8 @@ module.exports = {
         "login-input":"#F5F5F6",
         "darkblue2":"#435B76",
         "greenblue":"#BEE7E0",
-        "yellow":"#FDEAB5"
+        "yellow":"#FDEAB5",
+        "gray":"rgba(0,0,0,0.1)"
     },
     extend:{
       fontFamily: {
