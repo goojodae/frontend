@@ -3,8 +3,8 @@ import Header from "./components/Header";
 import Main from "./Main";
 import Login from "./Login";
 import SignUp from "./SignUp";
-import MyPage from "./MyPage";
 import Footer from "./components/Footer";
+import MyPage from "./mypage/MyPage";
 
 function App() {
   return (
