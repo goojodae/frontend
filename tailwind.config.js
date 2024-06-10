@@ -13,6 +13,7 @@ module.exports = {
     extend:{
       fontFamily: {
         "Outfit":["Outfit","sans-serif"],
+        "NotoSans":["Noto Sans KR", "sans-serif"]
       },
     },
     plugins: [],
