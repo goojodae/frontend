@@ -1,6 +1,13 @@
 import React from "react";
 import useStore from "./store";
 
+function Main(props) {
+    return (
+        <div>
+            <Loading />
+        </div>
+    );
+}
 const Main = () => {
   const isLogin = useStore((state) => state.isLogin);
 

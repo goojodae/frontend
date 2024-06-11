@@ -24,8 +24,8 @@ module.exports = {
         tooltip: "257px",
       },
       minHeight: {
-        imageLoader:"400px"
-      }
+        imageLoader: "400px",
+      },
     },
     plugins: [],
   },
