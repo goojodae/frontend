@@ -1,11 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
-import Main from "./Main";
 import Login from "./Login";
 import SignUp from "./SignUp";
 import Footer from "./components/Footer";
 import MyPage from "./mypage/MyPage";
 import NotFound from "./NotFound";
+import Main from "./Main";
+import GenerateImage from "./generate/GenerateImage";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/mypage" element={<MyPage />} />
+        <Route path="/generate" element={<GenerateImage />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
       <Footer />
