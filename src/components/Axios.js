@@ -4,7 +4,7 @@ import { getCookie } from "./Cookies";
 const server = process.env.REACT_APP_SERVER_PORT
 
 // certification
-export const signUp = async (userInfo) => {
+export const axiosSignUp = async (userInfo) => {
   return axios({
     method: "post",
     url: `${server}/api/auth/signup`,
@@ -12,7 +12,7 @@ export const signUp = async (userInfo) => {
   });
 };
 
-export const login = async (userInfo) => {
+export const axiosLogin = async (userInfo) => {
   console.log(server)
   return axios({
     method: "post",
@@ -21,7 +21,7 @@ export const login = async (userInfo) => {
   });
 };
 
-export const logout = async () => {
+export const axiosLogout = async () => {
   return axios({
     method: "post",
     url: `${server}/api/auth/logout`,
@@ -31,7 +31,7 @@ export const logout = async () => {
   });
 };
 
-export const withdraw = async (userInfo) => {
+export const axiosWithdraw = async (userInfo) => {
   return axios({
     method: "put",
     url: `${server}/api/auth/withdraw`,
@@ -41,7 +41,7 @@ export const withdraw = async (userInfo) => {
   });
 };
 
-export const resetPw = async (userInfo) => {
+export const axiosResetPw = async (userInfo) => {
   return axios({
     method: "put",
     url: `${server}/api/auth/reset-pw`,
@@ -53,7 +53,7 @@ export const resetPw = async (userInfo) => {
 };
 
 // Generate Image
-export const generationPgpg = async (imageInfo) => {
+export const axiosGenerationPgpg = async (imageInfo) => {
   return axios({
     method: "put",
     url: `${server}/api/generation/pgpg`,
@@ -64,7 +64,7 @@ export const generationPgpg = async (imageInfo) => {
   });
 };
 
-export const myPageList = async () => {
+export const axiosMyPageList = async () => {
   return axios({
     method: "get",
     url: `${server}/api/generation/my`,
@@ -74,7 +74,7 @@ export const myPageList = async () => {
   });
 };
 
-export const myPageDetail = async (generation_id) => {
+export const axiosMyPageDetail = async (generation_id) => {
   return axios({
     method: "get",
     url: `${server}/api/generation/my/${generation_id}`,

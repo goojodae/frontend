@@ -13,6 +13,8 @@ const Schema = yup.object({
     // .min(8, "최소 8자리 이상 입력해주세요.")
     .max(20, "최대 20자까지 가능합니다.")
     ,
+  passwordConfirm: yup
+    .string().oneOf([yup.ref('password'), null], '패스워드가 일치하지 않습니다.')
 });
 
 export default Schema;
