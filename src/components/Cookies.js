@@ -7,7 +7,9 @@ export const setCookie = (name, value, option) => {
 };
 
 export const getCookie = (name) => {
-  return cookies.get(name);
+  const cookie = cookies.get(name)
+  if (cookie){}
+  return cookie;
 };
 
 export const removeCookie = (name, option) => {

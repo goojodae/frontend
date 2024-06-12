@@ -1,79 +1,87 @@
 import axios from "axios";
-import { getCookie } from "./Cookies"; 
+import { getCookie } from "./Cookies";
+
+const server = process.env.REACT_APP_SERVER_PORT;
 
 // certification
-export const signUp = async (userInfo) => {
+export const axiosSignUp = async (userInfo) => {
   return axios({
     method: "post",
-    url: "/api/auth/signup",
+    url: `${server}/api/auth/signup`,
     data: userInfo,
   });
 };
 
-export const login = async (userInfo) => {
+export const axiosLogin = async (userInfo) => {
+  console.log(server);
   return axios({
     method: "post",
-    url: "/api/auth/login",
-    data:userInfo
+    url: `${server}/api/auth/login`,
+    data: userInfo,
   });
 };
 
-export const logout = async () => {
+export const axiosLogout = async () => {
   return axios({
     method: "post",
-    url: "/api/auth/login",
+    url: `${server}/api/auth/logout`,
     headers: {
-      Authorization: getCookie("accessToken")
+      Authorization: "Bearer " + getCookie("accessToken"),
     },
   });
 };
 
-export const withdraw = async (userInfo) => {
+export const axiosWithdraw = async (userInfo) => {
   return axios({
     method: "put",
-    url: "/api/auth/withdraw",
+    url: `${server}/api/auth/withdraw`,
     headers: {
-      Authorization: getCookie("accessToken")
+      Authorization: "Bearer " + getCookie("accessToken"),
     },
   });
 };
 
-export const resetPw = async (userInfo) => {
+export const axiosResetPw = async (userInfo) => {
   return axios({
     method: "put",
-    url: "/api/auth/reset-pw",
+    url: `${server}/api/auth/reset-pw`,
     headers: {
-      Authorization: getCookie("accessToken")
+      Authorization: "Bearer " + getCookie("accessToken"),
     },
-    data: userInfo
+    data: userInfo,
   });
 };
 
 // Generate Image
-export const generationPgpg = async (imageInfo) => {
+export const axiosGenerationPgpg = async (imageInfo) => {
   return axios({
-    method: "put",
-    url: "/api/generation/pgpg",
+    method: "post",
+    url: `${server}/api/generation/pgpg`,
     headers: {
-      Authorization: getCookie("accessToken")
+      Authorization: "Bearer " + getCookie("accessToken"),
+      // "Content-Type": "multipart/form-data",
     },
-    data: imageInfo
+    // data: imageInfo,
+    data: {
+      conditionImageUrl:"https://i.namu.wiki/i/GQMqb8jtiqpCo6_US7jmWDO30KfPB2MMvbdURVub61Rs6ALKqbG-nUATj-wNk7bXXWIDjiLHJxWYkTELUgybkA.webp",
+      targetImageUrl:"https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/cnoC/image/PMf1Svki5j407IcpPXbV6LMi4XY",
+    }
   });
 };
 
-export const myPageList = async () => {
+export const axiosMyPageList = async () => {
   return axios({
     method: "get",
-    url: "/api/generation/my",
+    url: `${server}/api/generation/my`,
     headers: {
-      Authorization: getCookie("accessToken")
+      Authorization: "Bearer " + getCookie("accessToken"),
     },
   });
 };
 
-export const myPageDetail = async (generation_id) => {
+export const axiosMyPageDetail = async (generation_id) => {
   return axios({
     method: "get",
-    url: `/api/generation/my/${generation_id}`,
+    url: `${server}/api/generation/my/${generation_id}`,
   });
 };
