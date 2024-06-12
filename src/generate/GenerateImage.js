@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { getCookie } from "../components/Cookies";
 import { axiosGenerationPgpg } from "../components/Axios";
 import LoadingIndicator from "../components/LoadingIndicator";
+import FabricCanvas from "./FabricCanvas";
 
 const GenerateImage = () => {
   const navigate = useNavigate();
@@ -22,20 +23,24 @@ const GenerateImage = () => {
   const [page, setPage] = useState(0);
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [imageFiles, setImageFiles] = useState([]);
 
   useEffect(() => {
     const newImages = [...images];
     newImages[page] = image;
     setImages(newImages);
   }, [image]);
+  useEffect(() => {
+    const newImageFiles = [...imageFiles];
+    newImageFiles[page] = imageFile;
+    setImageFiles(newImageFiles);
+    console.log(imageFile)
+  },[imageFile])
 
   const generateImage = async () => {
     setLoading(true);
     setPage(2);
-    axiosGenerationPgpg({
-      conditionImageUrl: images[0],
-      targetImageUrl: images[1],
-    })
+    axiosGenerationPgpg(imageFiles)
       .then((res) => {
         setImage(res.data.data.resultImageUrl);
         setLoading(false);
@@ -60,7 +65,7 @@ const GenerateImage = () => {
   const title = ["1. 변경할 이미지", "2. 목표 자세 이미지", "결과"];
 
   return (
-    <div className="bg-gray-100 p-5 mt-8 mb-8 min-h-screen">
+    <div className=" p-5 mt-8 mb-8 min-h-screen">
       <h1 className="text-2xl mb-2 text-center">{title[page]}</h1>
       {loading ? <LoadingIndicator /> : <></>}
       <div className="relative">
@@ -69,8 +74,10 @@ const GenerateImage = () => {
           className="w-8 h-8 hover:cursor-pointer"
           onClick={setActiveTooltip}
         ></img>}
-        <Tooltip activeTooltip={activeTooltip} />
+        <Tooltip activeTooltip={activeTooltip} page={page} />
       </div>
+      {page == 1?  <FabricCanvas setImageFile={setImageFile} setImage={setImage}/>:<></>}
+     
       <ImageUploader
         images={images}
         image={image}
