@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Schema from "./components/Schema";
-import { login } from "./components/Axios";
+import { axiosLogin } from "./components/Axios";
 import { getCookie, setCookie } from "./components/Cookies";
 import { options } from "./components/setupCertified";
 import { useNavigate } from "react-router-dom";
@@ -20,11 +20,9 @@ const Login = () => {
   // }, []);
   
   const onSubmit = async (data) => {
-    console.log("submit");
-    login(data)
+    axiosLogin(data)
       .then((res) => {
         window.alert("로그인되었습니다.");
-        // console.log(res)
         setCookie("accessToken", `${res.data.data.accessToken}`, 
           options,
         );
@@ -48,6 +46,7 @@ const Login = () => {
           placeholder="아이디"
           {...register("loginId")}
         ></input>
+        {errors.loginId? <p className="">{errors.loginId.message}</p> : <></>}
         <input
           type="password"
           name="password"
@@ -55,6 +54,7 @@ const Login = () => {
           placeholder="비밀번호"
           {...register("password")}
         ></input>
+        {errors.password? <p>{errors.password.message}</p> : <></>}
         <input
           type="submit"
           name="login"
@@ -68,7 +68,7 @@ const Login = () => {
         <a href="/signup" className="text-darkblue text-sm">
           회원가입
         </a>
-        <a href="/findpwd" className="text-darkblue text-sm">
+        <a href="/changepwd" className="text-darkblue text-sm">
           비밀번호 찾기
         </a>
       </div>

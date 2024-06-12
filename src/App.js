@@ -7,6 +7,7 @@ import MyPage from "./mypage/MyPage";
 import NotFound from "./NotFound";
 import Main from "./Main";
 import GenerateImage from "./generate/GenerateImage";
+import MyPageDetail from "./mypage/MyPageDetail";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/mypage" element={<MyPage />} />
+        <Route path="/mypage/:page" element={<MyPageDetail />} />
         <Route path="/generate" element={<GenerateImage />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>

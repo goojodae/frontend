@@ -6,6 +6,8 @@ const useStore = create(
         setActiveMenu: () => set((state) => ({ activeMenu: !state.activeMenu})),
         activeTooltip: false,
         setActiveTooltip: () => set((state) => ({ activeTooltip: !state.activeTooltip})),
+        myPageList: [],
+        setMyPageList: (list) => set({myPageList:list}),
     })
 )
 
