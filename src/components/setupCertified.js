@@ -10,5 +10,5 @@ export const headers = {
     secure: true,
     sameSite: "Strict",
     HttpOnly: " HttpOnly ",
-    maxAge: 3600
+    maxAge: 7200
   };
