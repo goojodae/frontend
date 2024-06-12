@@ -1,15 +1,21 @@
 import React, { useState } from "react";
+import ResultMenuBar from "./ResultMenuBar";
 
-const ImageUploader = ({ image, setImage, imageFile, setImageFile }) => {
+const ImageUploader = ({
+  images,
+  image,
+  setImage,
+  imageFile,
+  setImageFile,
+  page
+}) => {
   const [dragOver, setDragOver] = useState(false);
-  const [hasFile, setHasFile] = useState(false);
 
   const renderFile = (file) => {
     let reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onloadend = () => {
       setImage(reader.result);
-      setHasFile(true);
     };
   };
   const checkFileSize = (file) => {
@@ -39,6 +45,7 @@ const ImageUploader = ({ image, setImage, imageFile, setImageFile }) => {
       } else if (checkFileSize(e.dataTransfer.items[0].getAsFile())) {
         renderFile(e.dataTransfer.items[0].getAsFile());
         setImageFile(e.dataTransfer.items[0].getAsFile());
+        console.log(imageFile, image);
       }
     } else {
       if (e.dataTransfer.files.length > 1) {
@@ -73,34 +80,35 @@ const ImageUploader = ({ image, setImage, imageFile, setImageFile }) => {
       }
     }
   };
-  const handleDeleteFlie = (e) => {
-    setHasFile(false);
-    setImage(null);
-  };
+  // const handleDeleteFlie = (e) => {
+  //   setImage(null);
+  // };
 
   return (
     <div>
-      {hasFile ? (
+      {images[page] ? (
         <div
           onDrop={handleDrop}
           onDragOver={handleDragOver}
           onDragLeave={handleDragleave}
           className="mt-3 bg-white p-4 flex flex-col items-center border-header-blue border-4 border-solid rounded-2xl shadow-lg h-3/5 justify-center"
         >
-          <img src={image} className=''></img>
+          <img src={images[page]} className=""></img>
         </div>
       ) : (
         <div
           onDrop={handleDrop}
           onDragOver={handleDragOver}
           onDragLeave={handleDragleave}
-          className={`mt-3 p-4 flex flex-col items-center border-header-blue border-4 border-solid rounded-2xl shadow-lg h-3/5 justify-center min-h-imageLoader ${dragOver? 'bg-blue border-darkblue':'bg-white'}`}
+          className={`mt-3 p-4 flex flex-col items-center border-header-blue border-4 border-solid rounded-2xl shadow-lg h-3/5 justify-center min-h-imageLoader ${
+            dragOver ? "bg-blue border-darkblue" : "bg-white"
+          }`}
         >
           <p className="font-Outfit text-3xl text-darkgray">Posetive</p>
           <p className=" text-darkgray">업로드할 사진 끌어놓기 </p>
         </div>
       )}
-      <div className="flex justify-center mt-10">
+      {page === 2? <ResultMenuBar />: <div className="flex justify-center mt-10">
         <label
           onChange={handleFile}
           htmlFor="chooseFile"
@@ -116,7 +124,8 @@ const ImageUploader = ({ image, setImage, imageFile, setImageFile }) => {
           accept="image/png, image/jpeg, image/gif"
           multiple={false}
         />
-      </div>
+      </div>}
+      
     </div>
   );
 };
