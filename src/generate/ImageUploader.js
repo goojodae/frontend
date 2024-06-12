@@ -80,9 +80,6 @@ const ImageUploader = ({
       }
     }
   };
-  // const handleDeleteFlie = (e) => {
-  //   setImage(null);
-  // };
 
   return (
     <div>
