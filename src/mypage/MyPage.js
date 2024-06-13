@@ -42,8 +42,7 @@ const MyPage = () => {
         const reverseList = res.data.data.generations.reverse();
         setMyPageList(reverseList);
         const newPageCount = Math.ceil(reverseList.length / dataPerPage);
-        setPageCount(newPageCount);
-        console.log(pageCount);
+        setPageCount(newPageCount?newPageCount:1);
       })
       .catch((err) => {
         console.error(err);
