@@ -22,7 +22,7 @@ const FabricCanvas = ({ setImageFile, setImage }) => {
   }, []);
 
   const selectPen = () => {
-    canvas.freeDrawingBrush.width = 10;
+    canvas.freeDrawingBrush.width = 4;
     canvas.freeDrawingBrush.color = "black";
     canvas.isDrawingMode = true;
   };
@@ -56,7 +56,6 @@ const FabricCanvas = ({ setImageFile, setImage }) => {
     const blob = b64toBlob(base64Res, "image/jpeg");
     const canvasFile = new File([blob], "target.jpg", { type: "image/jpeg" });
     setImageFile(canvasFile);
-    setImage(canvasImage);
   };
 
   return (
@@ -80,9 +79,9 @@ const FabricCanvas = ({ setImageFile, setImage }) => {
         </button>
         <div
           onClick={saveImage}
-          className=" bg-darkgray text-white h-14 w-48 text-xl text-center content-center"
+          className=" bg-darkgray text-white h-14 w-48 text-xl text-center content-center hover:cursor-pointer"
         >
-          그림 업로드
+          그림 완성
         </div>
       </div>
     </div>

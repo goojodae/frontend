@@ -8,16 +8,13 @@ import { useNavigate } from "react-router-dom";
 import { getCookie } from "../components/Cookies";
 import { axiosGenerationPgpg } from "../components/Axios";
 import LoadingIndicator from "../components/LoadingIndicator";
-import FabricCanvas from "./FabricCanvas";
+import TargetImagePutter from "./TargetImagePutter";
 
 const GenerateImage = () => {
   const navigate = useNavigate();
   useEffect(() => {
     if (!getCookie("accessToken")) navigate("/");
   }, []);
-
-  const activeTooltip = useStore((state) => state.activeTooltip);
-  const setActiveTooltip = useStore((state) => state.setActiveTooltip);
   const [image, setImage] = useState(null);
   const [imageFile, setImageFile] = useState(null);
   const [page, setPage] = useState(0);
@@ -34,10 +31,14 @@ const GenerateImage = () => {
     const newImageFiles = [...imageFiles];
     newImageFiles[page] = imageFile;
     setImageFiles(newImageFiles);
-    console.log(imageFile)
-  },[imageFile])
+    console.log(imageFile);
+  }, [imageFile]);
 
   const generateImage = async () => {
+    if(!images[0] || !images[1]) {
+      window.alert('이미지를 업로드해주세요!');
+      return;
+    }
     setLoading(true);
     setPage(2);
     axiosGenerationPgpg(imageFiles)
@@ -66,30 +67,33 @@ const GenerateImage = () => {
 
   return (
     <div className=" p-5 mt-8 mb-8 min-h-screen">
-      <h1 className="text-2xl mb-2 text-center">{title[page]}</h1>
+      <h1 className="text-3xl mb-2 text-center">{title[page]}</h1>
       {loading ? <LoadingIndicator /> : <></>}
       <div className="relative">
-        {page === 2? <></>:<img
-          src={attention}
-          className="w-8 h-8 hover:cursor-pointer"
-          onClick={setActiveTooltip}
-        ></img>}
-        {page === 0? <select name="generatorName">
-          <option value="PG2">PG2</option>
-          <option value="PIDM">PIDM</option>
-        </select>:<></>}
-        <Tooltip activeTooltip={activeTooltip} page={page} />
       </div>
-      {page == 1?  <FabricCanvas setImageFile={setImageFile} setImage={setImage}/>:<></>}
-     
-      <ImageUploader
-        images={images}
-        image={image}
-        setImage={setImage}
-        imageFile={imageFile}
-        setImageFile={setImageFile}
-        page={page}
-      />
+      {page === 1 ? (
+        <TargetImagePutter
+          images={images}
+          image={image}
+          setImage={setImage}
+          imageFile={imageFile}
+          setImageFile={setImageFile}
+          page={page}
+        />
+      ) : (
+        <>
+          <Tooltip page={page} />
+          <ImageUploader
+            images={images}
+            image={image}
+            setImage={setImage}
+            imageFile={imageFile}
+            setImageFile={setImageFile}
+            page={page}
+          />
+        </>
+      )}
+
       <div className="flex flex-row justify-between mt-5">
         <img
           src={arrow}
@@ -99,7 +103,7 @@ const GenerateImage = () => {
         <img
           src={arrow}
           className={`w-8 h-8 rotate-180 ${page === 2 ? "invisible" : ""}`}
-          onClick={page === 1? generateImage:nextPage}
+          onClick={page === 1 ? generateImage : nextPage}
         ></img>
       </div>
     </div>

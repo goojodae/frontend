@@ -1,11 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import logo from "../src/asset/logo-color.png"
 import { getCookie } from "./components/Cookies";
 
 const Main = () => {
-  // useEffect(() => {
-    
-  // },[])
 
   return (
     <div className="container mx-auto px-4 flex flex-col pt-24 items-center h-screen w-full">
@@ -14,10 +11,16 @@ const Main = () => {
       {getCookie('accessToken') ? (
         <div className="flex flex-col justify-around h-60 p-14">
           <a
-            href="/generate"
-            className="bg-header-blue h-14 w-60 text-xl text-darkblue rounded-xl text-center content-center"
+            href="/generate/pgpg"
+            className="bg-header-blue h-14 w-60 text-darkblue rounded-xl text-center content-center"
           >
-            이미지 생성하기
+            GAN model로 이미지 생성
+          </a>
+          <a
+            href="/generate/pidm"
+            className="bg-header-blue h-14 w-60 text-darkblue rounded-xl text-center content-center"
+          >
+            Diffusion model로 이미지 생성
           </a>
         </div>
       ) : (
