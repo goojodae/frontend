@@ -31,10 +31,10 @@ export const axiosLogout = async () => {
   });
 };
 
-export const axiosWithdraw = async (userInfo) => {
+export const axiosWithdraw = async () => {
   return axios({
     method: "put",
-    url: `${server}/api/auth/withdraw`,
+    url: `${server}/api/user/withdraw`,
     headers: {
       Authorization: "Bearer " + getCookie("accessToken"),
     },

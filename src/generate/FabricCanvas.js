@@ -31,11 +31,30 @@ const FabricCanvas = ({ setImageFile, setImage }) => {
     canvas.freeDrawingBrush.width = 20;
     canvas.isDrawingMode = true;
   };
+  function b64toBlob(b64Data, contentType = "", sliceSize = 512) {
+    const byteCharacters = atob(b64Data);
+    const byteArrays = [];
+
+    for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+      const slice = byteCharacters.slice(offset, offset + sliceSize);
+
+      const byteNumbers = new Array(slice.length);
+      for (let i = 0; i < slice.length; i++) {
+        byteNumbers[i] = slice.charCodeAt(i);
+      }
+
+      const byteArray = new Uint8Array(byteNumbers);
+      byteArrays.push(byteArray);
+    }
+
+    const blob = new Blob(byteArrays, { type: contentType });
+    return blob;
+  }
   const saveImage = () => {
-    const canvasImage = canvas.toDataURL({
-      format: "image/jpg",
-    });
-    const canvasFile = new File([canvasImage], "target.jpg",  { type: "image/png" })
+    const canvasImage = canvas.toDataURL("image/jpg");
+    const base64Res = canvasImage.split(";base64,").pop();
+    const blob = b64toBlob(base64Res, "image/jpeg");
+    const canvasFile = new File([blob], "target.jpg", { type: "image/jpeg" });
     setImageFile(canvasFile);
     setImage(canvasImage);
   };

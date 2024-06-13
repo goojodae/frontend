@@ -18,7 +18,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/mypage" element={<MyPage />} />
-        <Route path="/mypage/:page" element={<MyPageDetail />} />
+        <Route path="/mypage/:imageId" element={<MyPageDetail />} />
         <Route path="/generate" element={<GenerateImage />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
