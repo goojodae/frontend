@@ -5,6 +5,7 @@ import { getCookie, removeCookie } from "./Cookies";
 import { axiosLogout } from "./Axios";
 import { useNavigate } from "react-router-dom";
 import { options } from "./setupCertified";
+import logo from "../asset/logo-black.png"
 
 const Header = () => {
   const activeMenu = useStore((state) => state.activeMenu);
@@ -26,9 +27,8 @@ const Header = () => {
   return (
     <header className="flex flex-row justify-between h-26 bg-header-blue items-center">
       <a href="/">
-        <div className="m-3 ml-4 font-Outfit text-3xl align-middle">
-          Posetive
-        </div>
+        <img  src={logo} className=" ml-4 font-Outfit align-middle w-40">
+        </img>
       </a>
       <div onClick={setActiveMenu} className="">
         <img src={hambuger} alt="menu" className="w-8 h-8 m-4 mr-4" />
@@ -43,6 +43,12 @@ const Header = () => {
               className="w-44 h-14 text-xl border-darkblue border-b-2 border-solid content-center"
             >
               Home
+            </a>
+            <a
+              href="/generate"
+              className="w-50 h-14 text-xl border-darkblue border-b-2 border-solid content-center"
+            >
+              Generate
             </a>
             <a
               href="/mypage"

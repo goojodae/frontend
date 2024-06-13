@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
-import useStore from "./store";
+import logo from "../src/asset/logo-color.png"
 import { getCookie } from "./components/Cookies";
 
 const Main = () => {
-  useEffect(() => {
+  // useEffect(() => {
     
-  },[])
+  // },[])
 
   return (
     <div className="container mx-auto px-4 flex flex-col pt-24 items-center h-screen w-full">
-      <h1 className="text-3xl mb-5">Posetive</h1>
+      <img src={logo} className=" w-72"></img>
       <p className="mb-10">이미지를 원하는 자세로 바꿔보세요</p>
       {getCookie('accessToken') ? (
         <div className="flex flex-col justify-around h-60 p-14">

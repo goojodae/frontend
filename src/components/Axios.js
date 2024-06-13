@@ -31,10 +31,10 @@ export const axiosLogout = async () => {
   });
 };
 
-export const axiosWithdraw = async (userInfo) => {
+export const axiosWithdraw = async () => {
   return axios({
     method: "put",
-    url: `${server}/api/auth/withdraw`,
+    url: `${server}/api/user/withdraw`,
     headers: {
       Authorization: "Bearer " + getCookie("accessToken"),
     },
@@ -54,18 +54,17 @@ export const axiosResetPw = async (userInfo) => {
 
 // Generate Image
 export const axiosGenerationPgpg = async (imageInfo) => {
+  let formData = new FormData();
+  formData.append("conditionImage", imageInfo[0]);
+  formData.append("targetImage", imageInfo[1]);
   return axios({
     method: "post",
     url: `${server}/api/generation/pgpg`,
     headers: {
       Authorization: "Bearer " + getCookie("accessToken"),
-      // "Content-Type": "multipart/form-data",
+      "Content-Type": "multipart/form-data",
     },
-    // data: imageInfo,
-    data: {
-      conditionImageUrl:"https://i.namu.wiki/i/GQMqb8jtiqpCo6_US7jmWDO30KfPB2MMvbdURVub61Rs6ALKqbG-nUATj-wNk7bXXWIDjiLHJxWYkTELUgybkA.webp",
-      targetImageUrl:"https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/cnoC/image/PMf1Svki5j407IcpPXbV6LMi4XY",
-    }
+    data: formData,
   });
 };
 
@@ -83,5 +82,8 @@ export const axiosMyPageDetail = async (generation_id) => {
   return axios({
     method: "get",
     url: `${server}/api/generation/my/${generation_id}`,
+    headers: {
+      Authorization: "Bearer " + getCookie("accessToken"),
+    },
   });
 };

@@ -16,27 +16,33 @@ const SignUp = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if(getCookie('accessToken')) navigate("/");
+    if (getCookie("accessToken")) navigate("/");
   }, []);
-  
+
   const onSubmit = async (data) => {
     axiosSignUp(data)
       .then((res) => {
-        window.alert("회원가입되었습니다. 로그인 해주십시오.");
-        console.log(res)
-        navigate("/login");
-        window.location.reload();
+        if (res.data.goojoCode === 200) {
+          window.alert("회원가입되었습니다. 로그인 해주십시오.");
+          navigate("/login");
+          window.location.reload();
+        } else{
+          console.error(res.data.message)
+        }
       })
       .catch((err) => {
         window.alert("회원가입 실패");
-        console.error(err)
+        console.error(err);
       });
   };
 
   return (
     <div className="container mx-auto px-4 flex flex-col pt-24 items-center h-screen w-full">
       <h1 className="font-Outfit text-3xl font-medium">Sign Up</h1>
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col m-6">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex flex-col m-6 items-center"
+      >
         <input
           type="id"
           name="loginId"
@@ -44,7 +50,7 @@ const SignUp = () => {
           placeholder="아이디"
           {...register("loginId")}
         ></input>
-        {errors.loginId? <p className="">{errors.loginId.message}</p> : <></>}
+        {errors.loginId ? <p className="">{errors.loginId.message}</p> : <></>}
         <input
           type="password"
           name="password"
@@ -52,19 +58,27 @@ const SignUp = () => {
           placeholder="비밀번호"
           {...register("password")}
         ></input>
-        {errors.password? <p className="">{errors.password.message}</p> : <></>}
-         <input
+        {errors.password ? (
+          <p className="">{errors.password.message}</p>
+        ) : (
+          <></>
+        )}
+        <input
           type="password"
           name="passwordConfirm"
           className="bg-login-input border-soild border-b-2 border-darkblue w-60 h-12 mt-3 p-3"
           placeholder="비밀번호 확인"
           {...register("passwordConfirm")}
         ></input>
-        {errors.passwordConfirm? <p className="">{errors.passwordConfirm.message}</p> : <></>}
+        {errors.passwordConfirm ? (
+          <p className="">{errors.passwordConfirm.message}</p>
+        ) : (
+          <></>
+        )}
         <input
           type="submit"
-          name="login"
-          value="로그인"
+          name="signup"
+          value="회원가입"
           className="bg-darkblue2 h-12 w-60 text-greenblue mt-10"
           disabled={isSubmitting}
         ></input>
@@ -73,9 +87,6 @@ const SignUp = () => {
       <div className="flex flex-row justify-around mt-24 w-60">
         <a href="/login" className="text-darkblue text-sm">
           로그인
-        </a>
-        <a href="/changepwd" className="text-darkblue text-sm">
-          비밀번호 찾기
         </a>
       </div>
     </div>

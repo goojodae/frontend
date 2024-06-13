@@ -16,29 +16,35 @@ const Login = () => {
   const navigate = useNavigate();
 
   // useEffect(() => {
-  //   if(getCookie('accessToken')) navigate("/");
+  //   if (getCookie("accessToken")) navigate("/");
   // }, []);
-  
+
   const onSubmit = async (data) => {
     axiosLogin(data)
       .then((res) => {
-        window.alert("로그인되었습니다.");
-        setCookie("accessToken", `${res.data.data.accessToken}`, 
-          options,
-        );
+        if(res.data.goojoCode === 200){
+          window.alert("로그인되었습니다.");
+        setCookie("accessToken", `${res.data.data.accessToken}`, options);
         navigate("/");
         window.location.reload();
+        }else{
+          window.alert(res.data.message)
+        }
+        
       })
       .catch((err) => {
         window.alert("아이디 혹은 비밀번호가 일치하지 않습니다.");
-        console.error(err)
+        console.error(err);
       });
   };
 
   return (
     <div className="container mx-auto px-4 flex flex-col pt-24 items-center h-screen w-full">
       <h1 className="font-Outfit text-3xl font-medium">Login</h1>
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col m-6">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex flex-col m-6  items-center"
+      >
         <input
           type="id"
           name="loginId"
@@ -46,7 +52,7 @@ const Login = () => {
           placeholder="아이디"
           {...register("loginId")}
         ></input>
-        {errors.loginId? <p className="">{errors.loginId.message}</p> : <></>}
+        {errors.loginId ? <p className="">{errors.loginId.message}</p> : <></>}
         <input
           type="password"
           name="password"
@@ -54,7 +60,7 @@ const Login = () => {
           placeholder="비밀번호"
           {...register("password")}
         ></input>
-        {errors.password? <p>{errors.password.message}</p> : <></>}
+        {errors.password ? <p>{errors.password.message}</p> : <></>}
         <input
           type="submit"
           name="login"
@@ -67,9 +73,6 @@ const Login = () => {
       <div className="flex flex-row justify-around mt-24 w-60">
         <a href="/signup" className="text-darkblue text-sm">
           회원가입
-        </a>
-        <a href="/changepwd" className="text-darkblue text-sm">
-          비밀번호 찾기
         </a>
       </div>
     </div>
