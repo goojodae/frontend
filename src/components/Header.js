@@ -45,6 +45,12 @@ const Header = () => {
               Home
             </a>
             <a
+              href="/generate"
+              className="w-50 h-14 text-xl border-darkblue border-b-2 border-solid content-center"
+            >
+              Generate
+            </a>
+            <a
               href="/mypage"
               className="w-50 h-14 text-xl border-darkblue border-b-2 border-solid content-center"
             >
