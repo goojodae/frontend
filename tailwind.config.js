@@ -21,6 +21,7 @@ module.exports = {
         darkblue: "#4B5A7E",
         "login-input": "#F5F5F6",
         darkblue2: "#435B76",
+        darkblue3:"#80B0FF",
         greenblue: "#BEE7E0",
         yellow: "#FDEAB5",
         gray: "rgba(0,0,0,0.1)",

@@ -31,7 +31,7 @@ const Header = () => {
         </img>
       </a>
       <div onClick={setActiveMenu} className="">
-        <img src={hambuger} alt="menu" className="w-8 h-8 m-4 mr-4" />
+        <img src={hambuger} alt="menu" className="w-8 h-8 m-4 mr-4 hover:cursor-pointer" />
         {getCookie("accessToken") ? (
           <div
             className={`flex flex-col text-center justify-items-center bg-yellow z-50 absolute right-0 border-darkblue border-2 border-solid ${
