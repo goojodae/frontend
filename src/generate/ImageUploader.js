@@ -1,16 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ResultMenuBar from "./ResultMenuBar";
 
-const ImageUploader = ({
-  images,
-  image,
-  setImage,
-  imageFile,
-  setImageFile,
-  page
-}) => {
+const ImageUploader = ({ images, image, setImage, setImageFile, page }) => {
   const [dragOver, setDragOver] = useState(false);
-
+  useEffect(() => {}, [image]);
   const renderFile = (file) => {
     let reader = new FileReader();
     reader.readAsDataURL(file);
@@ -45,7 +38,6 @@ const ImageUploader = ({
       } else if (checkFileSize(e.dataTransfer.items[0].getAsFile())) {
         renderFile(e.dataTransfer.items[0].getAsFile());
         setImageFile(e.dataTransfer.items[0].getAsFile());
-        console.log(imageFile, image);
       }
     } else {
       if (e.dataTransfer.files.length > 1) {
@@ -105,24 +97,27 @@ const ImageUploader = ({
           <p className=" text-darkgray">업로드할 사진 끌어놓기 </p>
         </div>
       )}
-      {page === 2? <ResultMenuBar />: <div className="flex justify-center mt-10">
-        <label
-          onChange={handleFile}
-          htmlFor="chooseFile"
-          className="file-label bg-darkgray text-white h-14 w-60 text-xl text-center content-center"
-        >
-          이미지 업로드
-        </label>
-        <input
-          className="file hidden"
-          id="chooseFile"
-          type="file"
-          onChange={handleFile}
-          accept="image/png, image/jpeg, image/gif"
-          multiple={false}
-        />
-      </div>}
-      
+      {page === 2 ? (
+        <ResultMenuBar />
+      ) : (
+        <div className="flex justify-center mt-10">
+          <label
+            onChange={handleFile}
+            htmlFor="chooseFile"
+            className="file-label bg-darkgray text-white h-14 w-60 text-xl text-center content-center"
+          >
+            이미지 업로드
+          </label>
+          <input
+            className="file hidden"
+            id="chooseFile"
+            type="file"
+            onChange={handleFile}
+            accept="image/png, image/jpeg, image/gif"
+            multiple={false}
+          />
+        </div>
+      )}
     </div>
   );
 };

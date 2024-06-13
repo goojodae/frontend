@@ -8,7 +8,6 @@ const TargetImagePutter = ({
   setImage,
   images,
   image,
-  imageFile,
   page,
   activeTooltip,
 }) => {
@@ -50,7 +49,6 @@ const TargetImagePutter = ({
             images={images}
             image={image}
             setImage={setImage}
-            imageFile={imageFile}
             setImageFile={setImageFile}
             page={page}
           />

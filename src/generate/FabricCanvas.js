@@ -56,6 +56,10 @@ const FabricCanvas = ({ setImageFile, setImage }) => {
     const blob = b64toBlob(base64Res, "image/jpeg");
     const canvasFile = new File([blob], "target.jpg", { type: "image/jpeg" });
     setImageFile(canvasFile);
+    setImage(canvasImage);
+    canvas.isDrawingMode = false;
+    console.log(fabric.Path)
+    canvas.selection = false;
   };
 
   return (

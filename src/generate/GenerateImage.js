@@ -31,20 +31,24 @@ const GenerateImage = () => {
     const newImageFiles = [...imageFiles];
     newImageFiles[page] = imageFile;
     setImageFiles(newImageFiles);
-    console.log(imageFile);
   }, [imageFile]);
 
   const generateImage = async () => {
-    if(!images[0] || !images[1]) {
-      window.alert('이미지를 업로드해주세요!');
+    if (!images[0] || !images[1]) {
+      window.alert("이미지를 업로드해주세요!");
       return;
     }
     setLoading(true);
     setPage(2);
     axiosGenerationPgpg(imageFiles)
       .then((res) => {
-        setImage(res.data.data.resultImageUrl);
-        setLoading(false);
+        if (res.data.goojoCode === 201) {
+          setImage(res.data.data.resultImageUrl);
+          setLoading(false);
+        }else {
+          console.error(res.data.message);
+          setLoading(false);
+        }
       })
       .catch((err) => {
         console.error(err);
@@ -69,8 +73,7 @@ const GenerateImage = () => {
     <div className=" p-5 mt-8 mb-8 min-h-screen">
       <h1 className="text-3xl mb-2 text-center">{title[page]}</h1>
       {loading ? <LoadingIndicator /> : <></>}
-      <div className="relative">
-      </div>
+      <div className="relative"></div>
       {page === 1 ? (
         <TargetImagePutter
           images={images}
@@ -87,7 +90,6 @@ const GenerateImage = () => {
             images={images}
             image={image}
             setImage={setImage}
-            imageFile={imageFile}
             setImageFile={setImageFile}
             page={page}
           />
