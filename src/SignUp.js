@@ -22,11 +22,12 @@ const SignUp = () => {
   const onSubmit = async (data) => {
     axiosSignUp(data)
       .then((res) => {
-        if (res.data.goojoCode === 200) {
+        if (res.data.goojoCode === 201) {
           window.alert("회원가입되었습니다. 로그인 해주십시오.");
           navigate("/login");
           window.location.reload();
         } else{
+          console.log(res)
           console.error(res.data.message)
         }
       })

@@ -74,6 +74,10 @@ const GenerateImage = () => {
           className="w-8 h-8 hover:cursor-pointer"
           onClick={setActiveTooltip}
         ></img>}
+        {page === 0? <select name="generatorName">
+          <option value="PG2">PG2</option>
+          <option value="PIDM">PIDM</option>
+        </select>:<></>}
         <Tooltip activeTooltip={activeTooltip} page={page} />
       </div>
       {page == 1?  <FabricCanvas setImageFile={setImageFile} setImage={setImage}/>:<></>}
