@@ -5,7 +5,6 @@ import { getCookie } from "../components/Cookies";
 import { axiosMyPageList } from "../components/Axios";
 import ResultImage from "./ResultImage";
 import Pagination from "./Pagination";
-import ChangePwd from "./ChangePwd";
 import Withdraw from "./Withdraw";
 
 const MyPage = () => {
@@ -71,7 +70,7 @@ const MyPage = () => {
         currentPage={currentPage}
       />
       <div className="flex flex-row mt-4 items-end w-full">
-        <div onClick={openWithDraw} className="ml-2">회원탈퇴</div>
+        <div onClick={openWithDraw} className="ml-2 hover:cursor-pointer">회원탈퇴</div>
       </div>
       {isClose ? (
         <></>
