@@ -3,9 +3,9 @@ import logo from "../src/asset/logo-color.png"
 import { getCookie } from "./components/Cookies";
 
 const Main = () => {
-  useEffect(() => {
+  // useEffect(() => {
     
-  },[])
+  // },[])
 
   return (
     <div className="container mx-auto px-4 flex flex-col pt-24 items-center h-screen w-full">
