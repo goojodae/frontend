@@ -34,25 +34,19 @@ const Header = () => {
         <img src={hambuger} alt="menu" className="w-8 h-8 m-4 mr-4 hover:cursor-pointer" />
         {getCookie("accessToken") ? (
           <div
-            className={`flex flex-col text-center justify-items-center bg-yellow z-50 absolute right-0 border-darkblue border-2 border-solid ${
+            className={`flex flex-col text-center justify-items-center bg-blue-300 z-50 absolute right-0 shadow-xl translate-duration-7000 ease-in-out ${
               activeMenu ? "" : "hidden"
             }`}
           >
             <a
               href="/"
-              className="w-44 h-14 text-xl border-darkblue border-b-2 border-solid content-center"
+              className="w-44 h-14 text-xl border-b-2 border-solid border-white content-center"
             >
               Home
             </a>
             <a
-              href="/generate"
-              className="w-50 h-14 text-xl border-darkblue border-b-2 border-solid content-center"
-            >
-              Generate
-            </a>
-            <a
               href="/mypage"
-              className="w-50 h-14 text-xl border-darkblue border-b-2 border-solid content-center"
+              className="w-50 h-14 text-xl border-b-2 border-solid border-white content-center"
             >
               My Page
             </a>
@@ -62,19 +56,19 @@ const Header = () => {
           </div>
         ) : (
           <div
-            className={`flex flex-col text-center justify-items-center bg-yellow z-50 absolute right-0 border-darkblue border-2 border-solid ${
+            className={`flex flex-col text-center justify-items-center bg-blue-300 z-50 absolute right-0 shadow-xl translate-duration-7000 ease-in-out ${
               activeMenu ? "" : "hidden"
             }`}
           >
             <a
               href="/"
-              className="w-44 h-14 text-xl border-darkblue border-b-2 border-solid content-center"
+              className="w-44 h-14 text-xl border-b-2 border-solid border-white content-center"
             >
               Home
             </a>
             <a
               href="/login"
-              className="w-50 h-14 text-xl border-darkblue border-b-2 border-solid content-center"
+              className="w-50 h-14 text-xl border-b-2 border-solid border-white content-center"
             >
               Login
             </a>
