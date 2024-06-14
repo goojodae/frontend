@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ResultMenuBar from "./ResultMenuBar";
 
 const ImageUploader = ({ images, image, setImage, setImageFile, page }) => {
   const [dragOver, setDragOver] = useState(false);
+  const fileInputRef = useRef(null);
+
   useEffect(() => {}, [image]);
   const renderFile = (file) => {
     let reader = new FileReader();
@@ -72,6 +74,9 @@ const ImageUploader = ({ images, image, setImage, setImageFile, page }) => {
       }
     }
   };
+  const handleFileClick = () => {
+    fileInputRef.current.click();
+  }
 
   return (
     <div>
@@ -80,6 +85,7 @@ const ImageUploader = ({ images, image, setImage, setImageFile, page }) => {
           onDrop={handleDrop}
           onDragOver={handleDragOver}
           onDragLeave={handleDragleave}
+          onClick={handleFileClick}
           className="mt-3 bg-white p-4 flex flex-col items-center border-header-blue border-4 border-solid rounded-2xl shadow-lg h-3/5 justify-center"
         >
           <img src={images[page]} className=""></img>
@@ -89,6 +95,7 @@ const ImageUploader = ({ images, image, setImage, setImageFile, page }) => {
           onDrop={handleDrop}
           onDragOver={handleDragOver}
           onDragLeave={handleDragleave}
+          onClick={handleFileClick}
           className={`mt-3 p-4 flex flex-col items-center border-header-blue border-4 border-solid rounded-2xl shadow-lg h-3/5 justify-center min-h-imageLoader ${
             dragOver ? "bg-blue border-darkblue" : "bg-white"
           }`}
@@ -101,14 +108,8 @@ const ImageUploader = ({ images, image, setImage, setImageFile, page }) => {
         <ResultMenuBar />
       ) : (
         <div className="flex justify-center mt-10">
-          <label
-            onChange={handleFile}
-            htmlFor="chooseFile"
-            className="file-label bg-darkgray text-white h-14 w-60 text-xl text-center content-center"
-          >
-            이미지 업로드
-          </label>
           <input
+          ref={fileInputRef}
             className="file hidden"
             id="chooseFile"
             type="file"
