@@ -8,6 +8,8 @@ import NotFound from "./NotFound";
 import Main from "./Main";
 import GenerateImage from "./generate/GenerateImage";
 import MyPageDetail from "./mypage/MyPageDetail";
+import GeneratePG from "./generate/GeneratePG";
+import GeneratePIDM from "./generate/GeneratePIDM";
 
 function App() {
   return (
@@ -19,7 +21,8 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/mypage/:imageId" element={<MyPageDetail />} />
-        <Route path="/generate" element={<GenerateImage />} />
+        <Route path="/generate/pgpg" element={<GeneratePG />} />
+        <Route path="/generate/pidm" element={<GeneratePIDM/>} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
       <Footer />

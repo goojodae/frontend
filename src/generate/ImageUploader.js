@@ -1,16 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ResultMenuBar from "./ResultMenuBar";
 
-const ImageUploader = ({
-  images,
-  image,
-  setImage,
-  imageFile,
-  setImageFile,
-  page
-}) => {
+const ImageUploader = ({ images, image, setImage, setImageFile, page }) => {
   const [dragOver, setDragOver] = useState(false);
+  const fileInputRef = useRef(null);
 
+  useEffect(() => {}, [image]);
   const renderFile = (file) => {
     let reader = new FileReader();
     reader.readAsDataURL(file);
@@ -45,7 +40,6 @@ const ImageUploader = ({
       } else if (checkFileSize(e.dataTransfer.items[0].getAsFile())) {
         renderFile(e.dataTransfer.items[0].getAsFile());
         setImageFile(e.dataTransfer.items[0].getAsFile());
-        console.log(imageFile, image);
       }
     } else {
       if (e.dataTransfer.files.length > 1) {
@@ -80,6 +74,9 @@ const ImageUploader = ({
       }
     }
   };
+  const handleFileClick = () => {
+    fileInputRef.current.click();
+  }
 
   return (
     <div>
@@ -88,6 +85,7 @@ const ImageUploader = ({
           onDrop={handleDrop}
           onDragOver={handleDragOver}
           onDragLeave={handleDragleave}
+          onClick={handleFileClick}
           className="mt-3 bg-white p-4 flex flex-col items-center border-header-blue border-4 border-solid rounded-2xl shadow-lg h-3/5 justify-center"
         >
           <img src={images[page]} className=""></img>
@@ -97,32 +95,30 @@ const ImageUploader = ({
           onDrop={handleDrop}
           onDragOver={handleDragOver}
           onDragLeave={handleDragleave}
+          onClick={handleFileClick}
           className={`mt-3 p-4 flex flex-col items-center border-header-blue border-4 border-solid rounded-2xl shadow-lg h-3/5 justify-center min-h-imageLoader ${
             dragOver ? "bg-blue border-darkblue" : "bg-white"
           }`}
         >
           <p className="font-Outfit text-3xl text-darkgray">Posetive</p>
-          <p className=" text-darkgray">업로드할 사진 끌어놓기 </p>
+          <p className=" text-darkgray">클릭 및 끌어놓기로 사진 업로드</p>
         </div>
       )}
-      {page === 2? <ResultMenuBar />: <div className="flex justify-center mt-10">
-        <label
-          onChange={handleFile}
-          htmlFor="chooseFile"
-          className="file-label bg-darkgray text-white h-14 w-60 text-xl text-center content-center"
-        >
-          이미지 업로드
-        </label>
-        <input
-          className="file hidden"
-          id="chooseFile"
-          type="file"
-          onChange={handleFile}
-          accept="image/png, image/jpeg, image/gif"
-          multiple={false}
-        />
-      </div>}
-      
+      {page === 2 ? (
+        <ResultMenuBar />
+      ) : (
+        <div className="flex justify-center mt-10">
+          <input
+          ref={fileInputRef}
+            className="file hidden"
+            id="chooseFile"
+            type="file"
+            onChange={handleFile}
+            accept="image/png, image/jpeg, image/gif"
+            multiple={false}
+          />
+        </div>
+      )}
     </div>
   );
 };

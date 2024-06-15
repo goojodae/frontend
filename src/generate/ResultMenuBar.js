@@ -6,7 +6,7 @@ const ResultMenuBar = () => {
     }
     return (
         <div className='flex justify-center mt-10'>
-            <div className="bg-darkgray text-white h-14 w-60 text-xl text-center content-center" onClick={resetPage}>다시하기</div>
+            <div className="bg-darkgray text-white h-14 w-60 text-xl text-center content-center hover:cursor-pointer" onClick={resetPage}>다시하기</div>
         </div>
     );
 };
