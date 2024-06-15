@@ -6,7 +6,6 @@ import Footer from "./components/Footer";
 import MyPage from "./mypage/MyPage";
 import NotFound from "./NotFound";
 import Main from "./Main";
-import GenerateImage from "./generate/GenerateImage";
 import MyPageDetail from "./mypage/MyPageDetail";
 import GeneratePG from "./generate/GeneratePG";
 import GeneratePIDM from "./generate/GeneratePIDM";
