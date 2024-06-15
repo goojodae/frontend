@@ -1,14 +1,15 @@
 import React from "react";
 import ReactPaginate from "react-paginate";
-import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import fiChevronRight from "../asset/right-chevron.png";
+import fiChevronLeft from "../asset/left-chevron.png"
 
 const Pagination = ({ pageCount, onPageChange, currentPage }) => {
     const pageRangeDisplayed = 5;
     const marginPagesDisplayed = 2;
     return (
     <ReactPaginate
-      previousLabel={<FiChevronLeft />}
-      nextLabel={<FiChevronRight />}
+      previousLabel={fiChevronLeft}
+      nextLabel={fiChevronRight}
       pageCount={pageCount}
       onPageChange={onPageChange}
       containerClassName={"pagination flex flex-row"}

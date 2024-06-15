@@ -56,7 +56,7 @@ const Header = () => {
           </div>
         ) : (
           <div
-            className={`flex flex-col text-center justify-items-center bg-blue-300 z-50 absolute right-0 shadow-xl translate-duration-7000 ease-in-out ${
+            className={`flex flex-col text-center justify-items-center rounded bg-blue-300 z-50 absolute right-0 shadow-xl transform scale-95 transition-opacity duration-300 ease-in-out  ${
               activeMenu ? "" : "hidden"
             }`}
           >
