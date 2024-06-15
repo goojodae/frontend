@@ -70,10 +70,10 @@ const GenerateImage = () => {
   const title = ["1. 변경할 이미지 선택", "2. 목표 자세 이미지 선택", "결과"];
 
   return (
-    <div className=" p-5 mt-8 mb-8 min-h-screen">
+    <div className="px-12 md:px-20 mt-8">
       <h1 className="text-3xl mb-2 text-center">{title[page]}</h1>
       {loading ? <LoadingIndicator /> : <></>}
-      <div className="relative"></div>
+      <div className="relative mt-7"></div>
       {page === 1 ? (
         <TargetImagePutter
           images={images}
@@ -84,7 +84,7 @@ const GenerateImage = () => {
           page={page}
         />
       ) : (
-        <>
+        <div className="mt-7">
           <Tooltip page={page} />
           <ImageUploader
             images={images}
@@ -93,7 +93,7 @@ const GenerateImage = () => {
             setImageFile={setImageFile}
             page={page}
           />
-        </>
+        </div>
       )}
 
       <div className="flex flex-row justify-between mt-5">

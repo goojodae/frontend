@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Schema from "./components/Schema";
@@ -24,8 +24,9 @@ const Login = () => {
       .then((res) => {
         if(res.data.goojoCode === 200){
           window.alert("로그인되었습니다.");
-        setCookie("accessToken", `${res.data.data.accessToken}`, options);
-        navigate("/");
+          sessionStorage.setItem('nickName',res.data.data.nickName)
+          setCookie("accessToken", `${res.data.data.accessToken}`, options);
+          navigate("/");
         window.location.reload();
         }else{
           window.alert(res.data.message)

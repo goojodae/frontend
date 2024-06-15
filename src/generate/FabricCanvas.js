@@ -83,9 +83,9 @@ const FabricCanvas = ({ setImageFile, setImage }) => {
         </button>
         <div
           onClick={saveImage}
-          className=" bg-darkgray text-white h-14 w-48 text-xl text-center content-center hover:cursor-pointer"
+          className=" bg-darkgray rounded-md text-white h-14 w-36 text-xl text-center content-center hover:cursor-pointer"
         >
-          그림 완성
+          그림 등록
         </div>
       </div>
     </div>
