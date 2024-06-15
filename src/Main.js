@@ -26,7 +26,7 @@ const Main = () => {
           >
             basic model
           </a>
-          <div className="relative h-14 w-60 text-white rounded-xl text-center content-center bg-gradient-to-r from-pink-300 to-purple-400 hover:from-purple-400 hover:to-pink-300 hover:shadow-xl transition duration-7000 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
+          <div className="relative h-14 w-60 text-white rounded-xl text-center content-center bg-gradient-to-r from-pink-300 to-purple-400 hover:from-purple-400 transition duration-7000 hover:to-pink-300 hover:shadow-xl  ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
             <a
               href="/generate/pidm"
               className="font-bold"

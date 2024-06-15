@@ -60,6 +60,7 @@ export const axiosGenerationPgpg = async (imageInfo) => {
   return axios({
     method: "post",
     url: `${server}/api/generation/pgpg`,
+    timeout:0,
     headers: {
       Authorization: "Bearer " + getCookie("accessToken"),
       "Content-Type": "multipart/form-data",

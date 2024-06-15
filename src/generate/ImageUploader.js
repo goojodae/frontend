@@ -101,7 +101,7 @@ const ImageUploader = ({ images, image, setImage, setImageFile, page }) => {
           }`}
         >
           <p className="font-Outfit text-3xl text-darkgray">Posetive</p>
-          <p className=" text-darkgray">업로드할 사진 끌어놓기 </p>
+          <p className=" text-darkgray">클릭 및 끌어놓기로 사진 업로드</p>
         </div>
       )}
       {page === 2 ? (

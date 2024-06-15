@@ -9,7 +9,7 @@ const useStore = create(
         myPageList: [],
         setMyPageList: (list) => set({myPageList:list}),
         inSubscribed: false,
-        setInSubscribed: (boolean) => set({inSubscribed:boolean})
+        setInSubscribed: (boolean) => set({inSubscribed:boolean}),
     })
 )
 

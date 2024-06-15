@@ -34,7 +34,7 @@ const Header = () => {
         <img src={hambuger} alt="menu" className="w-8 h-8 m-4 mr-4 hover:cursor-pointer" />
         {getCookie("accessToken") ? (
           <div
-            className={`flex flex-col text-center justify-items-center bg-blue-300 z-50 absolute right-0 shadow-xl translate-duration-7000 ease-in-out ${
+            className={`flex flex-col text-center justify-items-center rounded bg-blue-300 z-50 absolute right-0 shadow-xl transform scale-95 transition-opacity duration-300 ease-in-out ${
               activeMenu ? "" : "hidden"
             }`}
           >
