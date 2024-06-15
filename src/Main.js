@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "../src/asset/logo-color.png";
 import { getCookie } from "./components/Cookies";
-import { PiCrownSimpleFill } from "react-icons/pi";
+import crown from "./asset/crown.png";
 
 const Main = () => {
   return (
@@ -23,7 +23,7 @@ const Main = () => {
             >
               advanced pro model
             </a>
-            <PiCrownSimpleFill className="absolute left-32 top-3 text-yellow text" />
+            <img src={crown} className="absolute left-32 top-3" />
           </div>
         </div>
       ) : (
