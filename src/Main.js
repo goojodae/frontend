@@ -23,7 +23,7 @@ const Main = () => {
             >
               advanced pro model
             </a>
-            <img src={crown} className="absolute left-32 top-3" />
+            <img src={crown} className="absolute left-32 top-2 w-5" />
           </div>
         </div>
       ) : (

@@ -23,6 +23,7 @@ const ImageUploader = ({ images, image, setImage, setImageFile, page }) => {
     return true;
   };
   const handleDrop = (e) => {
+    if (page == 2) return;
     e.preventDefault();
     e.stopPropagation();
     setDragOver(false);
@@ -59,6 +60,7 @@ const ImageUploader = ({ images, image, setImage, setImageFile, page }) => {
     }
   };
   const handleDragOver = (e) => {
+    if (page == 2) return;
     e.preventDefault();
     e.stopPropagation();
     setDragOver(true);
@@ -67,6 +69,7 @@ const ImageUploader = ({ images, image, setImage, setImageFile, page }) => {
     setDragOver(false);
   };
   const handleFile = (e) => {
+    if (page == 2) return;
     if (e.target.files && e.target.files[0]) {
       if (checkFileSize(e.target.files[0])) {
         renderFile(e.target.files[0]);
@@ -75,8 +78,9 @@ const ImageUploader = ({ images, image, setImage, setImageFile, page }) => {
     }
   };
   const handleFileClick = () => {
+    if (page == 2) return;
     fileInputRef.current.click();
-  }
+  };
 
   return (
     <div>
@@ -109,7 +113,7 @@ const ImageUploader = ({ images, image, setImage, setImageFile, page }) => {
       ) : (
         <div className="flex justify-center mt-10">
           <input
-          ref={fileInputRef}
+            ref={fileInputRef}
             className="file hidden"
             id="chooseFile"
             type="file"

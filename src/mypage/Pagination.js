@@ -1,15 +1,13 @@
 import React from "react";
 import ReactPaginate from "react-paginate";
-import fiChevronRight from "../asset/right-chevron.png";
-import fiChevronLeft from "../asset/left-chevron.png"
 
 const Pagination = ({ pageCount, onPageChange, currentPage }) => {
-    const pageRangeDisplayed = 5;
-    const marginPagesDisplayed = 2;
-    return (
+  const pageRangeDisplayed = 5;
+  const marginPagesDisplayed = 2;
+  return (
     <ReactPaginate
-      previousLabel={fiChevronLeft}
-      nextLabel={fiChevronRight}
+      previousLabel="<"
+      nextLabel=">"
       pageCount={pageCount}
       onPageChange={onPageChange}
       containerClassName={"pagination flex flex-row"}
@@ -18,6 +16,7 @@ const Pagination = ({ pageCount, onPageChange, currentPage }) => {
       currentPage={currentPage}
       pageRangeDisplayed={pageRangeDisplayed}
       marginPagesDisplayed={marginPagesDisplayed}
+      className="p-2 flex flex-row min-w-24 justify-between"
     />
   );
 };

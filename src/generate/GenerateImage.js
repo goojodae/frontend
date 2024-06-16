@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import attention from "../../src/asset/attention.png";
 import Tooltip from "./Tooltip";
-import useStore from "../store";
 import ImageUploader from "./ImageUploader";
 import arrow from "../asset/arrow.png";
 import { useNavigate } from "react-router-dom";
@@ -45,7 +43,7 @@ const GenerateImage = () => {
         if (res.data.goojoCode === 201) {
           setImage(res.data.data.resultImageUrl);
           setLoading(false);
-        }else {
+        } else {
           console.error(res.data.message);
           setLoading(false);
         }
@@ -67,7 +65,7 @@ const GenerateImage = () => {
     }
   };
 
-  const title = ["1. 변경할 이미지 선택", "2. 목표 자세 이미지 선택", "결과"];
+  const title = ["1. 변경할 이미지 선택", "2. 원하는 자세 이미지 선택", "결과"];
 
   return (
     <div className="px-12 md:px-20 mt-8">
@@ -85,7 +83,7 @@ const GenerateImage = () => {
         />
       ) : (
         <div className="mt-7">
-          <Tooltip page={page} />
+          {page == 2 ? <></> : <Tooltip page={page} />}
           <ImageUploader
             images={images}
             image={image}
