@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import attention from "../../src/asset/attention.png";
 import Tooltip from "./Tooltip";
-import useStore from "../store";
 import ImageUploader from "./ImageUploader";
 import arrow from "../asset/arrow.png";
 import { useNavigate } from "react-router-dom";
@@ -45,7 +43,7 @@ const GenerateImage = () => {
         if (res.data.goojoCode === 201) {
           setImage(res.data.data.resultImageUrl);
           setLoading(false);
-        }else {
+        } else {
           console.error(res.data.message);
           setLoading(false);
         }
@@ -85,7 +83,7 @@ const GenerateImage = () => {
         />
       ) : (
         <div className="mt-7">
-          <Tooltip page={page} />
+          {page == 2 ? <></> : <Tooltip page={page} />}
           <ImageUploader
             images={images}
             image={image}

@@ -15,7 +15,7 @@ const GeneratePIDM = () => {
     })
     return (
         <div>
-            <div className="bg-gradient-to-br bg-gradient-to-r from-pink-300 to-purple-400 rounded-xl shadow-md m-5 p-4">advanced pro version</div>
+            <div className="bg-gradient-to-r from-pink-300 to-purple-400 rounded-xl shadow-md m-5 p-4">advanced pro version</div>
             <GenerateImage />
         </div>
     );
