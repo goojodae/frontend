@@ -67,7 +67,7 @@ const GenerateImage = () => {
     }
   };
 
-  const title = ["1. 변경할 이미지 선택", "2. 목표 자세 이미지 선택", "결과"];
+  const title = ["1. 변경할 이미지 선택", "2. 원하는 자세 이미지 선택", "결과"];
 
   return (
     <div className="px-12 md:px-20 mt-8">
