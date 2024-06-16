@@ -7,11 +7,13 @@ const FabricCanvas = ({ setImageFile, setImage }) => {
   const canvasRef = useRef(null);
   const canvasContainerRef = useRef(null);
   const [canvas, setCanvas] = useState(null);
+  const [saveDraw, setSaveDraw] = useState(false);
   useEffect(() => {
     const canvasContainer = canvasContainerRef.current;
     const newCanvas = new fabric.Canvas(canvasRef.current, {
       width: canvasContainer.offsetWidth,
       height: 500,
+      backgroundColor:"white"
     });
     setCanvas(newCanvas);
     newCanvas.freeDrawingBrush.width = 4;
@@ -31,6 +33,9 @@ const FabricCanvas = ({ setImageFile, setImage }) => {
     canvas.freeDrawingBrush.width = 20;
     canvas.isDrawingMode = true;
   };
+  const handleUndo = () => {
+    canvas
+  }
   function b64toBlob(b64Data, contentType = "", sliceSize = 512) {
     const byteCharacters = atob(b64Data);
     const byteArrays = [];
@@ -58,8 +63,9 @@ const FabricCanvas = ({ setImageFile, setImage }) => {
     setImageFile(canvasFile);
     setImage(canvasImage);
     canvas.isDrawingMode = false;
-    console.log(fabric.Path)
+    console.log(fabric.Path);
     canvas.selection = false;
+    setSaveDraw(true);
   };
 
   return (
@@ -83,7 +89,9 @@ const FabricCanvas = ({ setImageFile, setImage }) => {
         </button>
         <div
           onClick={saveImage}
-          className=" bg-darkgray rounded-md text-white h-14 w-36 text-xl text-center content-center hover:cursor-pointer"
+          className={`rounded-md text-white h-14 w-36 text-xl text-center content-center hover:cursor-pointer ${
+            saveDraw ? "bg-green-200" : "bg-slate-400"
+          }`}
         >
           그림 등록
         </div>
