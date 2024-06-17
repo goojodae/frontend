@@ -20,8 +20,8 @@ const TargetImagePutter = ({
     }
   };
   return (
-    <div>
-      <div className="flex justify-between flex-row text-nowrap items-center w-full justify-content-center mt-5">
+    <div className="flex flex-col items-center">
+      <div className="flex justify-between flex-row text-nowrap items-center w-96 justify-content-center mt-5">
         <Tooltip activeTooltip={activeTooltip} page={page}/>
         <div className="flex">
              <div onClick={onClick} className={` ${imageWay === "canvas"?'bg-darkblue2 text-greenblue':'bg-header-blue'}  h-10 p-2 text-center hover:cursor-pointer`} id="canvas">
