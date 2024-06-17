@@ -5,13 +5,10 @@ import pen from "../asset/pen.png";
 
 const FabricCanvas = ({ setImageFile, setImage }) => {
   const canvasRef = useRef(null);
-  const canvasContainerRef = useRef(null);
   const [canvas, setCanvas] = useState(null);
   const [saveDraw, setSaveDraw] = useState(false);
   useEffect(() => {
-    const canvasContainer = canvasContainerRef.current;
     const newCanvas = new fabric.Canvas(canvasRef.current, {
-      width: canvasContainer.offsetWidth,
       height: 500,
       backgroundColor:"white"
     });
@@ -67,17 +64,16 @@ const FabricCanvas = ({ setImageFile, setImage }) => {
 
   return (
     <div
-      className="flex flex-col justify-center mt-3 mb-6"
-      ref={canvasContainerRef}
+      className="flex flex-col items-center justify-center mt-3 mb-6"
     >
-      <div className="container px-auto flex">
+      <div className="container px-auto flex justify-center">
         <canvas
           id="fabric-canvas"
-          className="border-4 border-solid shadow-lg border-header-blue rounded-2xl"
+          className="max-w-imageLoader border-4 border-solid shadow-lg border-header-blue rounded-2xl"
           ref={canvasRef}
         ></canvas>
       </div>
-      <div className="flex flex-row mt-5 items-center justify-around ">
+      <div className="flex flex-row mt-5 w-80 items-center justify-around w-full max-w-imageLoader">
         <button className="w-8 h-8" onClick={selectPen}>
           <img src={pen} alt="pen"></img>
         </button>

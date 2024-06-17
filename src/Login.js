@@ -24,8 +24,8 @@ const Login = () => {
       .then((res) => {
         if(res.data.goojoCode === 200){
           window.alert("로그인되었습니다.");
-          sessionStorage.setItem('loginId', data.loginId)
-          sessionStorage.setItem('nickName',res.data.data.nickName)
+          localStorage.setItem('loginId', data.loginId)
+          localStorage.setItem('nickName',res.data.data.nickName)
           setCookie("accessToken", `${res.data.data.accessToken}`, options);
           navigate("/");
         window.location.reload();

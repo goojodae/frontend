@@ -83,14 +83,14 @@ const ImageUploader = ({ images, image, setImage, setImageFile, page }) => {
   };
 
   return (
-    <div>
+    <div className="flex flex-col justify-center items-center w-full">
       {images[page] ? (
         <div
           onDrop={handleDrop}
           onDragOver={handleDragOver}
           onDragLeave={handleDragleave}
           onClick={handleFileClick}
-          className="mt-3 bg-white p-4 flex flex-col items-center border-header-blue border-4 border-solid rounded-2xl shadow-lg h-3/5 justify-center"
+          className="mt-3 bg-white p-4 border-header-blue border-4 border-solid rounded-2xl shadow-lg h-3/5 max-w-imageLoader"
         >
           <img src={images[page]} alt="image"></img>
         </div>
@@ -100,18 +100,18 @@ const ImageUploader = ({ images, image, setImage, setImageFile, page }) => {
           onDragOver={handleDragOver}
           onDragLeave={handleDragleave}
           onClick={handleFileClick}
-          className={`mt-3 p-4 flex flex-col items-center border-header-blue border-4 border-solid rounded-2xl shadow-lg h-3/5 justify-center min-h-imageLoader ${
+          className={`mt-3 p-4 border-header-blue border-4 border-solid rounded-2xl shadow-lg min-h-imageLoader content-center max-w-imageLoader justify-center ${
             dragOver ? "bg-blue border-darkblue" : "bg-white"
           }`}
         >
-          <p className="font-Outfit text-3xl text-darkgray">Posetive</p>
-          <p className=" text-darkgray">클릭 및 끌어놓기로 사진 업로드</p>
+          <p className="font-Outfit text-3xl text-darkgray text-center">Posetive</p>
+          <p className=" text-darkgray  text-center">클릭 및 끌어놓기로 사진 업로드</p>
         </div>
       )}
       {page === 2 ? (
         <ResultMenuBar />
       ) : (
-        <div className="flex justify-center mt-10">
+        <div className="mt-10">
           <input
             ref={fileInputRef}
             className="file hidden"

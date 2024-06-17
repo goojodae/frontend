@@ -68,10 +68,9 @@ const GenerateImage = () => {
   const title = ["1. 변경할 이미지 선택", "2. 원하는 자세 이미지 선택", "결과"];
 
   return (
-    <div className="px-12 md:px-20 mt-8">
-      <h1 className="text-3xl mb-2 text-center">{title[page]}</h1>
-      {loading ? <LoadingIndicator /> : <></>}
-      <div className="relative mt-7"></div>
+    <div className="flex flex-col px-20 md:px-20 mt-8">
+      <h1 className="text-3xl mb-9 text-center">{title[page]}</h1>
+      {loading && <LoadingIndicator />}
       {page === 1 ? (
         <TargetImagePutter
           images={images}
@@ -82,8 +81,8 @@ const GenerateImage = () => {
           page={page}
         />
       ) : (
-        <div className="mt-7">
-          {page == 2 ? <></> : <Tooltip page={page} />}
+        <div className="flex flex-col items-center">
+          {page != 2 && <div className="w-96"><Tooltip page={page}/></div>}
           <ImageUploader
             images={images}
             image={image}
@@ -96,13 +95,11 @@ const GenerateImage = () => {
 
       <div className="flex flex-row justify-between mt-5">
         <img
-          alt="left-arrow"
           src={arrow}
           className={`w-8 h-8 ${!page || page === 2 ? "invisible" : ""}`}
           onClick={previousPage}
         ></img>
         <img
-          alt="right-arrow"
           src={arrow}
           className={`w-8 h-8 rotate-180 ${page === 2 ? "invisible" : ""}`}
           onClick={page === 1 ? generateImage : nextPage}
