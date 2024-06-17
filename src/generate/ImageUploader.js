@@ -92,7 +92,7 @@ const ImageUploader = ({ images, image, setImage, setImageFile, page }) => {
           onClick={handleFileClick}
           className="mt-3 bg-white p-4 flex flex-col items-center border-header-blue border-4 border-solid rounded-2xl shadow-lg h-3/5 justify-center"
         >
-          <img src={images[page]} className=""></img>
+          <img src={images[page]} alt="image"></img>
         </div>
       ) : (
         <div

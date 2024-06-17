@@ -13,7 +13,6 @@ export const axiosSignUp = async (userInfo) => {
 };
 
 export const axiosLogin = async (userInfo) => {
-  console.log(server);
   return axios({
     method: "post",
     url: `${server}/api/auth/login`,
@@ -60,7 +59,7 @@ export const axiosGenerationPgpg = async (imageInfo) => {
   return axios({
     method: "post",
     url: `${server}/api/generation/pgpg`,
-    timeout:0,
+    timeout:300000,
     headers: {
       Authorization: "Bearer " + getCookie("accessToken"),
       "Content-Type": "multipart/form-data",

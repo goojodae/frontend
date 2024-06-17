@@ -6,7 +6,7 @@ import crown from "./asset/crown.png";
 const Main = () => {
   return (
     <div className="container mx-auto px-4 flex flex-col pt-24 items-center h-screen w-full">
-      <img src={logo} className=" w-72"></img>
+      <img src={logo} className=" w-72" alt="posetive-icon"></img>
       <p className="mb-10">이미지를 원하는 자세로 바꿔보세요</p>
       {getCookie("accessToken") ? (
         <div className="flex flex-col justify-around h-40 ">
@@ -23,7 +23,7 @@ const Main = () => {
             >
               advanced pro model
             </a>
-            <img src={crown} className="absolute left-32 top-2 w-5" />
+            <img src={crown} className="absolute left-32 top-2 w-5" alt="crown-icon"/>
           </div>
         </div>
       ) : (

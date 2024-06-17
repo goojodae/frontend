@@ -33,9 +33,6 @@ const FabricCanvas = ({ setImageFile, setImage }) => {
     canvas.freeDrawingBrush.width = 20;
     canvas.isDrawingMode = true;
   };
-  // const handleUndo = () => {
-  //   canvas
-  // }
   function b64toBlob(b64Data, contentType = "", sliceSize = 512) {
     const byteCharacters = atob(b64Data);
     const byteArrays = [];
@@ -82,10 +79,10 @@ const FabricCanvas = ({ setImageFile, setImage }) => {
       </div>
       <div className="flex flex-row mt-5 items-center justify-around ">
         <button className="w-8 h-8" onClick={selectPen}>
-          <img src={pen}></img>
+          <img src={pen} alt="pen"></img>
         </button>
         <button className="w-7 h-7" onClick={selectEraser}>
-          <img src={eraser}></img>
+          <img src={eraser} alt="eraser"></img>
         </button>
         <div
           onClick={saveImage}
