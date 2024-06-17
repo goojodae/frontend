@@ -2,6 +2,8 @@ import React from "react";
 import Modal from "../components/Modal";
 import { axiosWithdraw } from "../components/Axios";
 import { useNavigate } from "react-router-dom";
+import { removeCookie } from "../components/Cookies";
+import { options } from "../components/setupCertified";
 
 const Withdraw = ({ isOpen, isClose, setIsClose }) => {
   const navigate = useNavigate()
@@ -12,6 +14,7 @@ const Withdraw = ({ isOpen, isClose, setIsClose }) => {
     axiosWithdraw()
       .then((res) => {
         if(res.data.goojoCode === 200){
+            removeCookie('accessToken', options);
             navigate("/");
             window.location.reload();
         }else{
