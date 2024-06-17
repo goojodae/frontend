@@ -16,6 +16,12 @@ module.exports = {
       minHeight: {
         imageLoader: "400px",
       },
+      maxWidth:{
+        imageLoader:"400px",
+      },
+      minWidth:{
+        imageLoader:"300px",
+      },
       colors: {
         "header-blue": "#C5E5FC",
         darkblue: "#4B5A7E",
