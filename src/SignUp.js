@@ -4,8 +4,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Schema from "./components/Schema";
 import { axiosSignUp } from "./components/Axios";
 import { getCookie, setCookie } from "./components/Cookies";
-import { options } from "./components/setupCertified";
 import { useNavigate } from "react-router-dom";
+import { options } from "./components/setupCertified";
 
 const SignUp = () => {
   const {
@@ -23,12 +23,12 @@ const SignUp = () => {
     axiosSignUp(data)
       .then((res) => {
         if (res.data.goojoCode === 201) {
-          window.alert("회원가입되었습니다. 로그인 해주십시오.");
-          navigate("/login");
+          window.alert("회원가입되었습니다.");
+          setCookie("accessToken", `${res.data.data.accessToken}`, options);
           window.location.reload();
         } else{
-          console.log(res)
-          console.error(res.data.message)
+          window.alert(res.data.message)
+          console.error(res)
         }
       })
       .catch((err) => {

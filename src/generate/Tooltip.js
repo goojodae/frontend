@@ -20,6 +20,7 @@ const Tooltip = ({ page }) => {
     <>
       <div className="relative z-50">
         <img
+          alt="tooltip"
           src={attention}
           className="w-8 h-8 hover:cursor-pointer"
           onClick={setActiveTooltip}
@@ -31,7 +32,7 @@ const Tooltip = ({ page }) => {
           >
             <img
               src={images[page]}
-              alt="example image"
+              alt="example-image"
               className="w-44 max-h-80"
             ></img>
             <div className="mt-3 text-xl">이런 사진이 좋아요</div>

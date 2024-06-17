@@ -96,11 +96,13 @@ const GenerateImage = () => {
 
       <div className="flex flex-row justify-between mt-5">
         <img
+          alt="left-arrow"
           src={arrow}
           className={`w-8 h-8 ${!page || page === 2 ? "invisible" : ""}`}
           onClick={previousPage}
         ></img>
         <img
+          alt="right-arrow"
           src={arrow}
           className={`w-8 h-8 rotate-180 ${page === 2 ? "invisible" : ""}`}
           onClick={page === 1 ? generateImage : nextPage}

@@ -15,15 +15,16 @@ const Login = () => {
   } = useForm({ mode: "onChange", resolver: yupResolver(Schema) });
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   if (getCookie("accessToken")) navigate("/");
-  // }, []);
+  useEffect(() => {
+    if (getCookie("accessToken")) navigate("/");
+  }, []);
 
   const onSubmit = async (data) => {
     axiosLogin(data)
       .then((res) => {
         if(res.data.goojoCode === 200){
           window.alert("로그인되었습니다.");
+          sessionStorage.setItem('loginId', data.loginId)
           sessionStorage.setItem('nickName',res.data.data.nickName)
           setCookie("accessToken", `${res.data.data.accessToken}`, options);
           navigate("/");
@@ -31,7 +32,6 @@ const Login = () => {
         }else{
           window.alert(res.data.message)
         }
-        
       })
       .catch((err) => {
         window.alert("아이디 혹은 비밀번호가 일치하지 않습니다.");
