@@ -5,7 +5,7 @@ import { getCookie } from "../components/Cookies";
 
 const GeneratePG = () => {
   const navigate = useNavigate();
-  const loginId = sessionStorage.getItem("loginId");
+  const loginId = localStorage.getItem("loginId");
   useEffect(() => {
     if (!getCookie("accessToken")) {
       navigate("/");

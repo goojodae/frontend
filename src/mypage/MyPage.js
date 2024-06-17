@@ -14,7 +14,7 @@ const MyPage = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [isOpenWithdraw, setIsOpenWithdraw] = useState(false);
   const [isClose, setIsClose] = useState(true);
-  const nickName = sessionStorage.getItem("nickName");
+  const nickName = localStorage.getItem("nickName");
   const dataPerPage =
     window.innerWidth > 540 ? 12 : window.innerWidth > 367 ? 10 : 5;
   let currentImages = myPageList.slice(
