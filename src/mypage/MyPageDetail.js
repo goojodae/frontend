@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { axiosMyPageDetail } from "../components/Axios";
 import { getCookie } from "../components/Cookies";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const MyPageDetail = () => {
   let { imageId } = useParams();
   const [conditionImageUrl, setConditionalImageUrl] = useState(null);
   const [targetImageUrl, setTargetImageUrl] = useState(null);
   const [resultImageUrl, setResultImageUrl] = useState(null);
+  const navigate = useNavigate();
   useEffect(() => {
     if (!getCookie("accessToken")) {
-      return;
+      navigate("/");
     }
     getMyPageDetail();
   }, []);
@@ -31,16 +32,24 @@ const MyPageDetail = () => {
       <div className="flex flex-row">
         <div className="flex flex-col items-center flex-shrink-0">
           <div>포즈를 바꿀 이미지</div>
-          <img src={conditionImageUrl} className="max-w-52"></img>
+          <img
+            alt="condtion-image"
+            src={conditionImageUrl}
+            className="max-w-52"
+          ></img>
         </div>
         <div className="flex flex-col items-center">
           <div>포즈 픽토그램</div>
-          <img src={targetImageUrl} className="max-w-52"></img>
+          <img
+            alt="target-image"
+            src={targetImageUrl}
+            className="max-w-52"
+          ></img>
         </div>
       </div>
       <div className="flex flex-col items-center flex-shrink-0">
         <div>결과 이미지</div>
-        <img src={resultImageUrl}></img>
+        <img alt="result-image" src={resultImageUrl}></img>
       </div>
     </div>
   );
