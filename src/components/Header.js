@@ -11,10 +11,12 @@ const Header = () => {
   const activeMenu = useStore((state) => state.activeMenu);
   const setActiveMenu = useStore((state) => state.setActiveMenu);
   const navigate = useNavigate();
-  const onClick = async () => {
+  const handleLogout = async () => {
     axiosLogout()
       .then((res) => {
         removeCookie("accessToken", options)
+        sessionStorage.removeItem('loginId');
+        sessionStorage.removeItem('nickName')
         window.alert("로그아웃되었습니다.");
         navigate("/");
         window.location.reload();
@@ -25,9 +27,9 @@ const Header = () => {
       });
   };
   return (
-    <header className="flex flex-row justify-between h-26 bg-header-blue items-center">
+    <header className="flex flex-row justify-between h-26 bg-header-blue items-center" alt="posetive-icon">
       <a href="/">
-        <img  src={logo} className=" ml-4 font-Outfit align-middle w-40">
+        <img src={logo} className=" ml-4 mb-2 font-Outfit align-middle w-36" alt="posetive-logo">
         </img>
       </a>
       <div onClick={setActiveMenu} className="">
@@ -50,7 +52,7 @@ const Header = () => {
             >
               My Page
             </a>
-            <div onClick={onClick} className="w-50 h-14 text-xl content-center">
+            <div onClick={handleLogout} className="w-50 h-14 text-xl content-center">
               Logout
             </div>
           </div>
